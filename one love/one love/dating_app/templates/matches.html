@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}One Love{% endblock %}</title>
+    <!-- Link to the updated style.css -->
+    <link rel="stylesheet" href="{% static 'wardrobe/style.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo">One Love</a>
+        <ul class="navbar-list">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'profile_settings' %}">Update Profile</a></li>
+            <li><a href="{% url 'browse_profiles' %}">Browse Profiles</a></li>
+            <li class="profile-dropdown">
+                <div class="profile-button" onclick="toggleDropdown()">
+                    <img src="{% if user.profile.picture %}{{ user.profile.picture.url }}{% else %}{% static 'profile_pictures/blank-profile-picture-973460_1280.jpg' %}{% endif %}" alt="Profile Picture" class="profile-pic">
+                </div>
+                <div id="dropdownMenu" class="dropdown-content">
+                    <a href="{% url 'settings' %}">Settings</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="container match-container">
+        <h1>Your Suggested Matches</h1>
+        {% if matches %}
+            <div class="match-grid">
+                {% for match in matches %}
+                    <div class="match-card">
+                        <img src="{{ match.picture.url }}" alt="{{ match.name }}" class="match-pic">
+                        <div class="match-details">
+                            <h3>{{ match.name }}</h3>
+                            <p><strong>Location:</strong> {{ match.location }}</p>
+                            <p><strong>Interests:</strong> {{ match.interests }}</p>
+                            <a href="{% url 'send_message' match.id %}" class="button">Send Message</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No matches found at the moment. Update your preferences to discover new connections!</p>
+        {% endif %}
+    </div>
+
+    <footer class="footer">
+        <p>&copy; {{ current_year }} One Love. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById("dropdownMenu").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.profile-button') && !event.target.matches('.profile-pic')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

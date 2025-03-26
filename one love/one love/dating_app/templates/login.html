@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}One Love{% endblock %}</title>
+    <!-- Link to the updated style.css -->
+    <link rel="stylesheet" href="{% static 'wardrobe/style.css' %}">
+</head>
+<body class="login-page"> <!-- Notice the "login-page" class -->
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo">One Love</a>
+        <ul class="navbar-list">
+            <li><a href="{% url 'register' %}">Sign Up</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="form-container">
+            <h1>Login to One Love</h1>
+            <p>Connect with your matches and continue your journey!</p>
+            
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+
+            <form method="POST" class="auth-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="button">Login</button>
+            </form>
+
+            <p class="alt-option">
+                Don't have an account?
+                <a href="{% url 'register' %}">Sign Up Here</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; {{ current_year }} One Love. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

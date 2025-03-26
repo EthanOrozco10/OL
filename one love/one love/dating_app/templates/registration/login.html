@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}One Love{% endblock %}</title>
+    <!-- Link to the updated style.css -->
+    <link rel="stylesheet" href="{% static 'wardrobe/style.css' %}">
+</head>
+<body class="login-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo">One Love</a>
+        <ul class="navbar-list">
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Login Form Container -->
+    <div class="container">
+        <h1>Login to One Love</h1>
+        <p>Welcome back! Please log in to continue.</p>
+
+        <form method="POST" class="login-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+
+        <!-- Additional Links -->
+        <p class="signup-link">
+            Don't have an account? <a href="{% url 'signup' %}">Sign Up</a>
+        </p>
+        <p class="forgot-password-link">
+            Forgot your password? <a href="{% url 'password_reset' %}">Reset it here</a>
+        </p>
+    </div>
+</body>
+</html>

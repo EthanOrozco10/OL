@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}One Love - Account Settings{% endblock %}</title>
+  <!-- Link to your updated CSS file -->
+  <link rel="stylesheet" href="{% static 'wardrobe/style.css' %}">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="{% url 'home' %}" class="logo">One Love</a>
+    <ul class="navbar-list">
+      <li><a href="{% url 'browse_profiles' %}">Browse Profiles</a></li>
+      <!-- If you have a valid URL name for matches, use it below. 
+           e.g., 'match_profiles' instead of 'matches' if 'matches' doesn't exist. -->
+      <li><a href="{% url 'match_profiles' %}">Matches</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="container settings-container">
+    <h1>Account Settings</h1>
+
+    <!-- We'll use two sections side-by-side or stacked depending on screen size -->
+    <div class="settings-grid">
+
+      <!-- Section 1: Update Profile Picture -->
+      <section class="settings-section">
+        <h2>Update Profile Picture</h2>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="picture">New Profile Picture:</label>
+            {{ form_picture.picture }} 
+            <!-- 
+              form_picture is assumed to be the ProfilePictureForm 
+              which only has 'picture' field. 
+              Adjust variable names if needed.
+            -->
+          </div>
+          <button type="submit" class="button">Upload</button>
+        </form>
+
+        <div class="current-picture">
+          <h3>Current Profile Picture:</h3>
+          {% if profile.picture %}
+            <img src="{{ profile.picture.url }}" alt="Profile Picture" class="profile-pic">
+          {% else %}
+            <p>No profile picture uploaded.</p>
+          {% endif %}
+        </div>
+      </section>
+
+      <!-- Section 2: Update Profile Information (excluding 'picture' field) -->
+      <section class="settings-section">
+        <h2>Update Profile Information</h2>
+        <form method="post">
+          {% csrf_token %}
+          {% comment %}
+            We loop over the fields in your ProfileUpdateForm,
+            but exclude the 'picture' field if it's in that form.
+          {% endcomment %}
+          {% for field in form_info %}
+            {% if field.name != 'picture' %}
+              <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+              </div>
+            {% endif %}
+          {% endfor %}
+          <button type="submit" class="button">Save Changes</button>
+        </form>
+      </section>
+
+    </div> <!-- .settings-grid -->
+  </div> <!-- .container -->
+
+  <footer class="footer">
+    <p>&copy; {{ current_year|default:"2024" }} One Love. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

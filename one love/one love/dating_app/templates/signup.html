@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}One Love{% endblock %}</title>
+    <!-- Link to your main style.css -->
+    <link rel="stylesheet" href="{% static 'wardrobe/style.css' %}">
+</head>
+<body class="register-page">
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo">One Love</a>
+        <ul class="navbar-list">
+            <li><a href="{% url 'login' %}">Log In</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h1>Create Your Account</h1>
+        <p>Join One Love and find meaningful connections.</p>
+
+        <!-- Signup Form -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password1">Password</label>
+                <input type="password" id="password1" name="password1" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" id="password2" name="password2" placeholder="Confirm your password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="picture">Profile Picture</label>
+                <input type="file" id="picture" name="picture">
+            </div>
+
+            <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="Where are you from?">
+            </div>
+
+            <div class="form-group">
+                <label for="date_of_birth">Date of Birth</label>
+                <input type="date" id="date_of_birth" name="date_of_birth">
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    <option value="" disabled selected>Choose your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="non_binary">Non-Binary</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="looking_for">Looking For</label>
+                <select id="looking_for" name="looking_for">
+                    <option value="" disabled selected>What are you looking for?</option>
+                    <option value="friendship">Friendship</option>
+                    <option value="relationship">Relationship</option>
+                    <option value="casual">Casual Dating</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Optional Footer (if you want one on this page) -->
+    <!--
+    <footer class="main-footer">
+        <p>&copy; 2025 One Love. All rights reserved.</p>
+    </footer>
+    -->
+
+</body>
+</html>

@@ -1,0 +1,760 @@
+/* Reset some basic elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body & Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5; /* Soft gray background */
+    color: #333;              /* Dark gray text */
+    line-height: 1.6;
+}
+
+/* Header */
+header.main-header {
+    background-color: #0275d8; /* A pleasant blue tone */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+header.main-header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+header.main-header .tagline {
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Navigation Bar */
+nav.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 2rem;
+}
+
+.navbar-list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar-list li {
+    margin-right: 1.5rem;
+}
+
+.navbar-list li a {
+    color: #0275d8;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar-list li a:hover {
+    color: #0056b3;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+    position: relative;
+}
+
+.profile-button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    min-width: 150px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    padding: 0.5rem 0;
+    display: none; /* Hidden by default; toggled by JavaScript */
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #0275d8;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f2f2f2;
+}
+
+/* Toggle the dropdown */
+.show {
+    display: block;
+}
+
+/* Main Container */
+main.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #0275d8;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* How It Works Section */
+.how-it-works {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.how-it-works h3 {
+    margin-bottom: 1rem;
+}
+
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.step {
+    flex: 1 1 250px;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 300px;
+}
+
+.step h4 {
+    margin-bottom: 0.5rem;
+}
+
+.step p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Footer */
+footer.main-footer {
+    text-align: center;
+    color: #666;
+    margin-top: 2rem;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+footer.main-footer p {
+    margin: 0;
+}
+
+/* Extra styling for demonstration */
+p {
+    margin-bottom: 1rem;
+}
+
+/* SIGNUP PAGE STYLES */
+body.register-page {
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body.register-page .navbar {
+    background-color: #0275d8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+body.register-page .navbar .logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+body.register-page .navbar .navbar-list {
+    list-style: none;
+}
+
+body.register-page .navbar .navbar-list li {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+body.register-page .navbar .navbar-list li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+body.register-page .navbar .navbar-list li a:hover {
+    text-decoration: underline;
+}
+
+body.register-page .container {
+    background-color: #fff;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+body.register-page h1 {
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    color: #333;
+}
+
+body.register-page p {
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+/* Form groups */
+body.register-page .form-group {
+    margin-bottom: 1.25rem;
+}
+
+body.register-page .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+body.register-page .form-group input[type="text"],
+body.register-page .form-group input[type="email"],
+body.register-page .form-group input[type="password"],
+body.register-page .form-group input[type="date"],
+body.register-page .form-group textarea,
+body.register-page .form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Focus states for inputs */
+body.register-page .form-group input[type="text"]:focus,
+body.register-page .form-group input[type="email"]:focus,
+body.register-page .form-group input[type="password"]:focus,
+body.register-page .form-group input[type="date"]:focus,
+body.register-page .form-group textarea:focus,
+body.register-page .form-group select:focus {
+    outline: none;
+    border-color: #0275d8;
+    box-shadow: 0 0 3px rgba(2, 117, 216, 0.25);
+}
+
+/* Submit Button */
+body.register-page button.btn {
+    background-color: #0275d8;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+body.register-page button.btn:hover {
+    background-color: #025aa5;
+}
+
+/* LOGIN PAGE SPECIFIC STYLES */
+body.login-page {
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Override Navbar for the login page */
+body.login-page .navbar {
+    background-color: #0275d8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+body.login-page .navbar .logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+body.login-page .navbar .navbar-list {
+    list-style: none;
+}
+
+body.login-page .navbar .navbar-list li {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+body.login-page .navbar .navbar-list li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+body.login-page .navbar .navbar-list li a:hover {
+    text-decoration: underline;
+}
+
+/* Container for the login form */
+body.login-page .container {
+    background-color: #fff;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 2rem auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Container */
+body.login-page .form-container h1 {
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    color: #333;
+}
+
+body.login-page .form-container p {
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+/* Form Groups */
+body.login-page .form-group {
+    margin-bottom: 1.25rem;
+}
+
+body.login-page .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+body.login-page .form-group input[type="text"],
+body.login-page .form-group input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Input Focus */
+body.login-page .form-group input[type="text"]:focus,
+body.login-page .form-group input[type="password"]:focus {
+    outline: none;
+    border-color: #0275d8;
+    box-shadow: 0 0 3px rgba(2, 117, 216, 0.25);
+}
+
+/* Submit Button */
+body.login-page .button {
+    background-color: #0275d8;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+body.login-page .button:hover {
+    background-color: #025aa5;
+}
+
+/* Alternate Option Link */
+body.login-page .alt-option {
+    margin-top: 1rem;
+    color: #555;
+    text-align: center;
+}
+
+body.login-page .alt-option a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+body.login-page .alt-option a:hover {
+    text-decoration: underline;
+}
+
+/* Footer for Login Page */
+body.login-page .footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    color: #666;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+.site-header, .site-footer {
+    background-color: #0275d8;
+    color: #fff;
+    padding: 1rem 2rem;
+  }
+  
+  .site-header .logo,
+  .site-footer p {
+    margin: 0;
+  }
+  
+  .dashboard-container {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  
+  /* Chat Page Styles */
+.chat-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+.chat-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 500px; /* Adjust as needed */
+    overflow: hidden;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    text-align: left;
+}
+
+.chat-message {
+    margin-bottom: 1rem;
+    max-width: 70%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    position: relative;
+}
+
+.chat-message.received {
+    background-color: #e9ecef;
+    align-self: flex-start;
+}
+
+.chat-message.sent {
+    background-color: #0275d8;
+    color: #fff;
+    align-self: flex-end;
+}
+
+.chat-message .timestamp {
+    display: block;
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 0.25rem;
+    text-align: right;
+}
+
+.chat-form {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+.chat-form input[type="text"] {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    font-size: 1rem;
+}
+
+.chat-form button.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background-color: #0275d8;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.chat-form button.btn:hover {
+    background-color: #025aa5;
+}
+
+/* Messages Page Styles */
+
+.messages-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .messages-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #0275d8;
+  }
+  
+  .messages-container p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+  }
+  
+  /* Styling for future message list */
+  .message-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    max-height: 400px;
+    overflow-y: auto;
+    text-align: left;
+  }
+  
+  .message-item {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .message-item:last-child {
+    border-bottom: none;
+  }
+  
+  .message-item .sender {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .message-item .timestamp {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 0.5rem;
+  }
+  
+  /* Input form styling */
+  .messages-container .chat-form {
+    display: flex;
+    margin-top: 1.5rem;
+  }
+  
+  .messages-container .chat-form input[type="text"] {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+  }
+  
+  .messages-container .chat-form button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background-color: #0275d8;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .messages-container .chat-form button:hover {
+    background-color: #025aa5;
+  }
+
+  /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Global Styles */
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .navbar .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0275d8;
+    text-decoration: none;
+  }
+  .navbar-list {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  .navbar-list li a {
+    text-decoration: none;
+    color: #0275d8;
+    font-weight: 500;
+  }
+  .navbar-list li a:hover {
+    color: #0056b3;
+  }
+  
+  /* Container for Settings Page */
+  .container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .settings-container {
+    padding: 2rem;
+  }
+  .settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  /* Settings Sections */
+  .settings-section {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+  }
+  .settings-section h2 {
+    margin-bottom: 1rem;
+    color: #0275d8;
+  }
+  
+  /* Forms */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"],
+  .form-group input[type="date"],
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Buttons */
+  .button {
+    background-color: #0275d8;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Profile Picture Display */
+  .current-picture {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .current-picture img.profile-pic {
+    max-width: 150px;
+    border-radius: 50%;
+    border: 2px solid #0275d8;
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+  

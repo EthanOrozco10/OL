@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat - One Love</title>
+  <!-- Link to your main style.css -->
+  <link rel="stylesheet" href="{% static 'wardrobe/style.css' %}">
+  <!-- Link to the chat-specific CSS (optional) -->
+  <link rel="stylesheet" href="{% static 'wardrobe/chat.css' %}">
+</head>
+<body class="chat-page">
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="{% url 'home' %}" class="logo">One Love</a>
+      <ul class="navbar-list">
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'browse_profiles' %}">Browse Profiles</a></li>
+          <li><a href="{% url 'chat' %}">Chat</a></li>
+          <li class="profile-dropdown">
+            <div class="profile-button" onclick="toggleDropdown()">
+              <img src="{% if user.profile.picture %}{{ user.profile.picture.url }}{% else %}{% static 'profile_pictures/blank-profile-picture-973460_1280.jpg' %}{% endif %}" alt="Profile Picture" class="profile-pic">
+            </div>
+            <div id="dropdownMenu" class="dropdown-content">
+              <a href="{% url 'profile_settings' %}">Profile Settings</a>
+              <a href="{% url 'logout' %}">Logout</a>
+            </div>
+          </li>
+        {% else %}
+          <li><a href="{% url 'register' %}">Sign Up</a></li>
+          <li><a href="{% url 'login' %}">Log In</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Chat Content -->
+  <main class="chat-container">
+    <h1>Chat</h1>
+    <div class="chat-box">
+      <!-- Chat messages -->
+      <div class="chat-messages">
+        <!-- Example messages -->
+        <div class="chat-message received">
+          <p>Hello, how are you?</p>
+          <span class="timestamp">10:30 AM</span>
+        </div>
+        <div class="chat-message sent">
+          <p>I’m good, thanks! How about you?</p>
+          <span class="timestamp">10:32 AM</span>
+        </div>
+        <!-- More messages will appear here -->
+      </div>
+      <!-- Chat input form -->
+      <form method="POST" class="chat-form">
+        {% csrf_token %}
+        <input type="text" name="message" placeholder="Type your message..." required>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; {{ current_year|default:2024 }} One Love. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Dropdown -->
+  <script>
+    function toggleDropdown() {
+      document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+    window.onclick = function(event) {
+      if (!event.target.matches('.profile-button') && !event.target.matches('.profile-pic')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+          const openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages - One Love</title>
+  <link rel="stylesheet" href="{% static 'wardrobe/style.css' %}">
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="{% url 'home' %}" class="logo">One Love</a>
+      <ul class="navbar-list">
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'browse_profiles' %}">Browse Profiles</a></li>
+          <li><a href="{% url 'chat' %}">Chat</a></li>
+          <li class="profile-dropdown">
+            <div class="profile-button" onclick="toggleDropdown()">
+              <img src="{% if user.profile.picture %}{{ user.profile.picture.url }}{% else %}{% static 'profile_pictures/blank-profile-picture-973460_1280.jpg' %}{% endif %}" alt="Profile Picture" class="profile-pic">
+            </div>
+            <div id="dropdownMenu" class="dropdown-content">
+              <a href="{% url 'profile_settings' %}">Profile Settings</a>
+              <a href="{% url 'logout' %}">Logout</a>
+            </div>
+          </li>
+        {% else %}
+          <li><a href="{% url 'register' %}">Sign Up</a></li>
+          <li><a href="{% url 'login' %}">Log In</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Messages Content -->
+  <main class="messages-container">
+    <h1>Your Messages</h1>
+    <p>This is where your messages will appear.</p>
+    <!-- Future implementation: Loop through messages and display them here -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; {{ current_year|default:2024 }} One Love. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Dropdown -->
+  <script>
+    function toggleDropdown() {
+      document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+    window.onclick = function(event) {
+      if (!event.target.matches('.profile-button') && !event.target.matches('.profile-pic')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    };
+  </script>
+</body>
+</html>
